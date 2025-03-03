@@ -1,9 +1,9 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
 
-function App() {
+/* function App() {
   const [count, setCount] = useState(0)
 
   return (
@@ -32,4 +32,64 @@ function App() {
   )
 }
 
-export default App
+export default App */
+
+
+function AboutPage() {
+  return (
+    <>
+      <p>Hello there! How do you do?</p>
+    </>
+  );
+}
+
+// -----shopping list-----
+const products = [
+  { title: 'Cabbage', isFruit: false, id: 1 },
+  { title: 'Garlic', isFruit: false, id: 2 },
+  { title: 'Apple', isFruit: true, id: 3 },
+];
+function ShoppingList() {
+  const listItems = products.map( (product) => { 
+    return (
+      <li key = {product.id}
+          style={{
+            color: product.isFruit ? 'magenta' : 'darkgreen'
+          }}>
+        {product.title}
+      </li>
+    )
+  });
+
+  return(
+    <ul>{listItems}</ul>
+  ); 
+}
+
+function MyButton({ count, onClick }) {
+
+  return (
+    <>
+      <button onClick = {onClick}className='click-here-button'>You clicked {count} times</button>
+    </>
+  );
+}
+
+
+export default function MyApp() {
+  const [count, setCount] = useState(0);
+
+  function handleClicks() {
+    setCount(count + 1);
+  }
+
+  return (
+    <>
+      <ShoppingList />
+      <AboutPage />
+      <p>To learn react</p>
+      <MyButton count={count} onClick={handleClicks} />
+      <MyButton count={count} onClick={handleClicks} />
+    </>
+  );
+}
