@@ -66,30 +66,32 @@ function ShoppingList() {
   ); 
 }
 
-function MyButton({ count, onClick }) {
+function MyButton({count, handleClick}) {
 
-  return (
-    <>
-      <button onClick = {onClick}className='click-here-button'>You clicked {count} times</button>
-    </>
+
+  return(
+    <button style = {{backgroundColor: 'red'}}
+      onClick={handleClick}>
+      You clicked {count} times
+    </button>
   );
 }
 
 
 export default function MyApp() {
-  const [count, setCount] = useState(0);
 
-  function handleClicks() {
+  const [count, setCount] = useState(0);
+  function handleClick() {
     setCount(count + 1);
   }
-
+  
   return (
     <>
       <ShoppingList />
       <AboutPage />
       <p>To learn react</p>
-      <MyButton count={count} onClick={handleClicks} />
-      <MyButton count={count} onClick={handleClicks} />
+      <MyButton count = {count} handleClick={handleClick}/>
+      <MyButton count = {count} handleClick={handleClick}/>
     </>
   );
 }
